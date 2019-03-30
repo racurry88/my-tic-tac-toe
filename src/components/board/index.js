@@ -1,3 +1,3 @@
-import View from './board.view.js';
+import View from './board.js';
 
 export default View;

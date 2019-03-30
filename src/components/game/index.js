@@ -1,3 +1,3 @@
-import View from './game.view.js';
+import View from './game.js';
 
 export default View;
