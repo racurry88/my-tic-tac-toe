@@ -1,13 +1,13 @@
 {
-  "main.css": "/my-tic-tac-toe/static/css/main.c40a30aa.chunk.css",
-  "main.js": "/my-tic-tac-toe/static/js/main.c4b2a7ef.chunk.js",
-  "main.js.map": "/my-tic-tac-toe/static/js/main.c4b2a7ef.chunk.js.map",
-  "runtime~main.js": "/my-tic-tac-toe/static/js/runtime~main.7d9e2bac.js",
-  "runtime~main.js.map": "/my-tic-tac-toe/static/js/runtime~main.7d9e2bac.js.map",
-  "static/js/2.83a43218.chunk.js": "/my-tic-tac-toe/static/js/2.83a43218.chunk.js",
-  "static/js/2.83a43218.chunk.js.map": "/my-tic-tac-toe/static/js/2.83a43218.chunk.js.map",
-  "index.html": "/my-tic-tac-toe/index.html",
-  "precache-manifest.6267f26fd6d09f82b74ae6ab767a9f7c.js": "/my-tic-tac-toe/precache-manifest.6267f26fd6d09f82b74ae6ab767a9f7c.js",
-  "service-worker.js": "/my-tic-tac-toe/service-worker.js",
-  "static/css/main.c40a30aa.chunk.css.map": "/my-tic-tac-toe/static/css/main.c40a30aa.chunk.css.map"
+  "main.css": "/react-tutorial-my-tic-tac-toe/static/css/main.c40a30aa.chunk.css",
+  "main.js": "/react-tutorial-my-tic-tac-toe/static/js/main.c4b2a7ef.chunk.js",
+  "main.js.map": "/react-tutorial-my-tic-tac-toe/static/js/main.c4b2a7ef.chunk.js.map",
+  "runtime~main.js": "/react-tutorial-my-tic-tac-toe/static/js/runtime~main.57f32d80.js",
+  "runtime~main.js.map": "/react-tutorial-my-tic-tac-toe/static/js/runtime~main.57f32d80.js.map",
+  "static/js/2.83a43218.chunk.js": "/react-tutorial-my-tic-tac-toe/static/js/2.83a43218.chunk.js",
+  "static/js/2.83a43218.chunk.js.map": "/react-tutorial-my-tic-tac-toe/static/js/2.83a43218.chunk.js.map",
+  "index.html": "/react-tutorial-my-tic-tac-toe/index.html",
+  "precache-manifest.bc530a2315b2a68e10570d1bd0e383f2.js": "/react-tutorial-my-tic-tac-toe/precache-manifest.bc530a2315b2a68e10570d1bd0e383f2.js",
+  "service-worker.js": "/react-tutorial-my-tic-tac-toe/service-worker.js",
+  "static/css/main.c40a30aa.chunk.css.map": "/react-tutorial-my-tic-tac-toe/static/css/main.c40a30aa.chunk.css.map"
 }
