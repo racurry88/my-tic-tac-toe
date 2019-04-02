@@ -16,7 +16,8 @@ export default class Game extends React.Component {
   }
 
   handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const { stepNumber, xIsNext, history: fullHistory } = this.state;
+    const history = fullHistory.slice(0, stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
@@ -25,52 +26,50 @@ export default class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]){
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
     this.setState({
         history: history.concat([{
-          squares: squares,
-          location: location,
+          squares,
+          location,
         }]),
         stepNumber: history.length,
-        xIsNext: !this.state.xIsNext,
+        xIsNext: !xIsNext,
     });
   }
 
-  jumpTo(step) {
+  jumpTo(stepNumber) {
     this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0,
+      stepNumber,
+      xIsNext: (stepNumber % 2) === 0,
     });
   }
 
   render() {
-    const history = this.state.history;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const { history, stepNumber, xIsNext } = this.state;
+    const { squares: currentSquares } = history[stepNumber];
+    const winner = calculateWinner(currentSquares);
 
     const moves = history.map((step, move) => {
-        const desc = move ?
-          'Go to the move #' + move + ' at ' + step.location:
-          'Go to game start';
+        const desc = move
+          ? `Go to the move #${move} at ${step.location}`
+          : 'Go to game start';
+        const isActive = move === stepNumber ? 'active' : null;
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)} className={move===this.state.stepNumber ? "active" : null}>{desc}</button>
+            <button onClick={() => this.jumpTo(move)} className={isActive}>{desc}</button>
           </li>
         );
     });
 
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
+    const status = winner
+      ? `Winner: ${winner}`
+      : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
       <div className="game">
         <div className="game-board">
           <Board
-            squares={current.squares}
+            squares={currentSquares}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
