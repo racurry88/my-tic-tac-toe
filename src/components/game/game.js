@@ -12,11 +12,12 @@ export default class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      movesAsc: true,
     };
   }
 
   handleClick(i) {
-    const { stepNumber, xIsNext, history: fullHistory } = this.state;
+    const { stepNumber, xIsNext, history: fullHistory, movesAsc } = this.state;
     const history = fullHistory.slice(0, stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -34,6 +35,7 @@ export default class Game extends React.Component {
         }]),
         stepNumber: history.length,
         xIsNext: !xIsNext,
+        movesAsc: movesAsc,
     });
   }
 
@@ -44,8 +46,15 @@ export default class Game extends React.Component {
     });
   }
 
+  sortMoves() {
+    const { movesAsc } = this.state;
+    this.setState({
+      movesAsc: !movesAsc,
+    });
+  }
+
   render() {
-    const { history, stepNumber, xIsNext } = this.state;
+    const { history, stepNumber, xIsNext, movesAsc } = this.state;
     const { squares: currentSquares } = history[stepNumber];
     const winner = calculateWinner(currentSquares);
 
@@ -81,7 +90,8 @@ export default class Game extends React.Component {
         </div>
         <div data-testid="gameinfo" className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <button onClick={() => this.sortMoves()}>{`Sort moves ${movesAsc ? 'Descending' : 'Ascending'}`}</button>
+          <ol>{movesAsc ? moves.sort() : moves.reverse()}</ol>
         </div>
       </div>
     );
