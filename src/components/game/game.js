@@ -56,7 +56,13 @@ export default class Game extends React.Component {
         const isActive = move === stepNumber ? 'active' : null;
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)} className={isActive}>{desc}</button>
+            <button
+              data-testid={`move${move}`}
+              onClick={() => this.jumpTo(move)}
+              className={isActive}
+            >
+              {desc}
+            </button>
           </li>
         );
     });
@@ -66,14 +72,14 @@ export default class Game extends React.Component {
       : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
-      <div className="game">
-        <div className="game-board">
+      <div data-testid="game" className="game">
+        <div data-testid="gameboard" className="game-board">
           <Board
             squares={currentSquares}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
-        <div className="game-info">
+        <div data-testid="gameinfo" className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
@@ -83,23 +89,14 @@ export default class Game extends React.Component {
 }
 
 function getLocation(square){
-  const locations = {
-    0: "(1,1)",
-    1: "(1,2)",
-    2: "(1,3)",
-    3: "(2,1)",
-    4: "(2,2)",
-    5: "(2,3)",
-    6: "(3,1)",
-    7: "(3,2)",
-    8: "(3,3)",
-  };
-
-  return locations[square];
+  return [
+    "(1,1)", "(1,2)", "(1,3)",
+    "(2,1)", "(2,2)", "(2,3)",
+    "(3,1)", "(3,2)", "(3,3)",
+  ][square];
 }
 
-
-function calculateWinner(squares) {
+export function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],

@@ -22,14 +22,12 @@ describe('Components/Square', () => {
 
   it('calls the function when clicked', () => {
     const onClick = jest.fn();
-    const buttonClick = { button: 2 }
+
     const { getByTestId } = render((
       <Square onClick={onClick} value="X" />
     ));
 
-    waitForElement(() => getByTestId('square'));
-
-    fireEvent.submit(getByTestId('square'),buttonClick);
+    fireEvent.click(getByTestId('square'));
 
     expect(onClick.mock.calls).to.have.length(1);
   });
