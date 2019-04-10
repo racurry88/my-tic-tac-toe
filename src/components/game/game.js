@@ -24,7 +24,7 @@ export default class Game extends React.Component {
 
     let location = getLocation(i);
 
-    if (calculateWinner(squares) || squares[i]){
+    if (calculateWinner(squares).winner || squares[i]){
       return;
     }
     squares[i] = xIsNext ? 'X' : 'O';
@@ -76,8 +76,8 @@ export default class Game extends React.Component {
         );
     });
 
-    const status = winner
-      ? `Winner: ${winner}`
+    const status = winner.winner
+      ? `Winner: ${winner.winner}`
       : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
@@ -86,6 +86,7 @@ export default class Game extends React.Component {
           <Board
             squares={currentSquares}
             onClick={(i) => this.handleClick(i)}
+            winningLine={winner.winningLine}
           />
         </div>
         <div data-testid="gameinfo" className="game-info">
@@ -120,8 +121,14 @@ export function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return {
+        winner: squares[a],
+        winningLine: [a, b, c],
+      };
     }
   }
-  return null;
+  return {
+    winner: null,
+    winningLine: [],
+  };
 }

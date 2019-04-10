@@ -52,3 +52,7 @@ ol, ul {
 .active {
   font-weight: bold;
 }
+
+.winningCell {
+  background-color: #42f495;
+}

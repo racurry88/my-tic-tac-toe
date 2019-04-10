@@ -4,7 +4,8 @@ import Square from '../../components/square'
 
 const cells = [0,1,2];
 
-export default function Board({ squares, onClick, ...props }) {
+export default function Board({ squares, onClick, winningLine, ...props }) {
+  winningLine = winningLine ? winningLine : [];
   return (
     <div data-testid="board" {...props}>
       {cells.map((row) => (
@@ -15,6 +16,7 @@ export default function Board({ squares, onClick, ...props }) {
               data-testid={`cell${3 * row + col}`}
               value={squares[3 * row + col]}
               onClick={() => onClick(3 * row + col)}
+              winningCell={winningLine.includes(3 * row + col) ? 'winningCell' : null}
             />
           ))}
         </div>
